@@ -3,20 +3,21 @@
     <div class="list-group">
       <a
         *ngFor="let server of servers"
-        [queryParams]="{allowEdit : '2', testQuery: '10'}"
-        [routerLink]="['/servers', 5, 'edit']"
-        fragment="home"
+        [queryParams]="{allowEdit : server.id === 3 ? '1' : '0'}"
+        [routerLink]="['/servers', server.id, 'edit']"
         class="list-group-item"
+        fragment="home"
         href="#">
         {{ server.name }}
       </a>
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <button (click)="onReloadPage()" class="btn btn-primary">Reload Page</button>
-    <app-edit-server></app-edit-server>
-    <hr>
-    <app-server></app-server>
+    <router-outlet></router-outlet>
+<!--    <button (click)="onReloadPage()" class="btn btn-primary">Reload Page</button>-->
+<!--    <app-edit-server></app-edit-server>-->
+<!--    <hr>-->
+<!--    <app-server></app-server>-->
   </div>
 </div>
 
